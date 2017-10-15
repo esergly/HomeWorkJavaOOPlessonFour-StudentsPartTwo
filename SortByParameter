@@ -1,0 +1,57 @@
+import java.util.Comparator;
+
+public class SortByParameter implements Comparator {
+    private int i = 0;
+
+    public SortByParameter(int i) {
+        super();
+        this.i = i;
+    }
+
+    public SortByParameter() {
+        super();
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        Student studentFirst = (Student) o1;
+        Student studentSecond = (Student) o2;
+
+        if (o1 != null && o2 == null) {
+            return 1;
+        }
+        if (o1 == null && o2 != null) {
+            return -1;
+        }
+        if (o1 == null && o2 == null) {
+            return 0;
+        }
+        switch (this.i) {
+            case 0:
+                return (studentFirst.getName().compareTo(studentSecond.getName()));
+            case 1:
+                return (studentFirst.getSurname().compareTo(studentSecond.getSurname()));
+            case 2:
+                return (studentFirst.getAge() - studentSecond.getAge());
+            case 3:
+                return (studentFirst.getSex().compareTo(studentSecond.getSex()));
+            case 4:
+                return ((studentFirst.getGrowth() > studentSecond.getGrowth()) ? 1 : -1);
+            case 5:
+                return ((studentFirst.getWeight() > studentSecond.getWeight()) ? 1 : -1);
+            case 6:
+                return (studentFirst.getFaculty().compareTo(studentSecond.getFaculty()));
+            case 7:
+                return (studentFirst.getCourse() - studentSecond.getCourse());
+        }
+        return 0;
+    }
+}
